@@ -1,0 +1,12 @@
+#include <bits/stdc++.h> 
+long long int modularExponentiation(long long int x, long long int n, long long int m)
+{
+        if(n==0) return 1;
+        long long int p=modularExponentiation(x,n/2,m);
+        if(n%2==0)
+        return ((p%m)*(p%m))%m;
+         
+        long long int q=((x%m)*(p%m))%m;
+        return ((q)*(p%m))%m;
+     
+}
