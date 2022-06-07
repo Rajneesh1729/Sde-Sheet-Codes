@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+int fact(int n)
+{
+    if(n==0) return 1;
+    return n*fact(n-1);
+}
+ string f(string ans,int n,int k,vector<int>&v,int m)
+ {
+     if(n==0)
+     {
+         return ans;
+     }
+     int p=fact(n-1);
+     double x=double(k)/(double)p;
+     int q=ceil(x);
+     int ck=0;
+     for(int j=1;j<=m;j++)
+     {
+         if(v[j]==0)
+         {
+             ck++;
+         }
+         if(ck==q)
+         {
+             v[j]=1;
+             ans+='0'+j;
+             break;
+         }
+     }
+     k-=p*(q-1);
+     return f(ans,n-1,k,v,m);
+ }
+
+string kthPermutation(int n, int k) {
+    // Write your code here.
+      string ans="";
+      int m=n; 
+      vector<int>v(n+1,0);
+      return f(ans,n,k,v,m);
+     
+}
